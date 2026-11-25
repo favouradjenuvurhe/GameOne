@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#090b11">
+  <title>PROJECT TITAN — Prototype 0.1</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="renderCanvas" aria-label="Project Titan 3D fighting arena"></canvas>
+
+    <div class="topbar">
+      <div class="brand"><span class="brand-mark">T</span><div><b>PROJECT TITAN</b><small>COMBAT SIMULATION / 0.1</small></div></div>
+      <div class="round-info"><span>ROUND</span><b id="round">01</b><i></i><span id="timer">99</span></div>
+      <button id="pauseBtn" class="small-btn" aria-label="Pause game">Ⅱ</button>
+    </div>
+
+    <section class="hud">
+      <div class="fighter-hud player-hud">
+        <div class="fighter-name"><b>VEX</b><span>PLAYER 01</span></div>
+        <div class="health-track"><div id="playerHealth" class="health-fill player-fill"></div></div>
+        <div class="meter-track"><div id="playerMeter" class="meter-fill"></div></div>
+      </div>
+      <div class="versus">VS</div>
+      <div class="fighter-hud enemy-hud">
+        <div class="fighter-name"><span>CPU / LEVEL 01</span><b>KAEL</b></div>
+        <div class="health-track"><div id="enemyHealth" class="health-fill enemy-fill"></div></div>
+        <div class="meter-track"><div id="enemyMeter" class="meter-fill"></div></div>
+      </div>
+    </section>
+
+    <div id="centerMessage" class="center-message"><strong>TITAN ARENA</strong><span>GET READY</span></div>
+    <div id="toast" class="toast"></div>
+
+    <div class="bottom-ui">
+      <div class="control-hint">MOVE <b>LEFT STICK</b><span>CAMERA <b>RIGHT SIDE / DRAG</b></span></div>
+      <div class="mobile-controls">
+        <div class="stick-zone">
+          <div id="stickBase" class="stick-base"><div id="stickKnob" class="stick-knob"></div></div>
+        </div>
+        <div class="action-zone">
+          <button class="action-btn triangle" data-action="heavy"><span>△</span><small>HEAVY</small></button>
+          <button class="action-btn circle" data-action="special"><span>○</span><small>SPECIAL</small></button>
+          <button class="action-btn square" data-action="light"><span>□</span><small>LIGHT</small></button>
+          <button class="action-btn cross" data-action="jump"><span>×</span><small>JUMP</small></button>
+          <button class="action-btn block" data-action="block"><span>L1</span><small>BLOCK</small></button>
+          <button class="action-btn grab" data-action="grab"><span>R1</span><small>GRAB</small></button>
+          <button class="action-btn dodge" data-action="dodge"><span>R2</span><small>DODGE</small></button>
+          <button class="action-btn lock" data-action="lock"><span>L2</span><small>LOCK</small></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="startScreen" class="overlay">
+      <div class="modal">
+        <div class="eyebrow">ORIGINAL 3D FIGHTING EXPERIENCE</div>
+        <h1>ENTER THE<br><em>TITAN ARENA</em></h1>
+        <p>One arena. Two fighters. No room for hesitation.</p>
+        <div class="modal-stats"><span>PLAYER <b>VEX</b></span><span>OPPONENT <b>KAEL / AI</b></span><span>MODE <b>ARCADE TEST</b></span></div>
+        <button id="startBtn" class="primary-btn">START FIGHT <span>→</span></button>
+        <small class="fineprint">Prototype 0.1 · Placeholder 3D characters · Audio not included</small>
+      </div>
+    </div>
+
+    <div id="endScreen" class="overlay hidden">
+      <div class="modal">
+        <div class="eyebrow">MATCH COMPLETE</div>
+        <h1 id="endTitle">VICTORY</h1>
+        <p id="endCopy">The arena belongs to you.</p>
+        <button id="rematchBtn" class="primary-btn">FIGHT AGAIN <span>↻</span></button>
+      </div>
+    </div>
+
+    <div id="pauseScreen" class="overlay hidden">
+      <div class="modal compact">
+        <div class="eyebrow">SIMULATION PAUSED</div><h1>PAUSED</h1>
+        <button id="resumeBtn" class="primary-btn">RESUME <span>→</span></button>
+        <button id="quitBtn" class="secondary-btn">RETURN TO TITLE</button>
+      </div>
+    </div>
+    <div class="loading" id="loading">INITIALIZING ARENA…</div>
+  </main>
+  <script src="./src/game.js"></script>
+</body>
+</html>
